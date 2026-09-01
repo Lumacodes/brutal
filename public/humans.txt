@@ -1,6 +1,7 @@
-## Brutal Theme ##
+## Subhajit Kumar Das ##
 
-All development & Content by Elian Van Cutsem
+Product Engineer | AI & Full-Stack Developer | Systems & Open Source
 
-- email: hello@elian.codes
-- website: www.elian.codes
+- email: subhajitkumardas@outlook.com
+- github: github.com/lumacodes
+- website: luma.is-a.dev

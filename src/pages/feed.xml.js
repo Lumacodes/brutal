@@ -4,8 +4,8 @@ import rss from '@astrojs/rss';
 export async function GET(context) {
   const blog = await getCollection('blog');
   return rss({
-    title: 'Brutal Blog',
-    description: 'Brutal is a theme for Astro',
+    title: 'subhajit Blog',
+    description: 'subhajit is a personal portfolio and blog',
     stylesheet: false,
     site: context.site,
     items: blog.map((post) => ({
