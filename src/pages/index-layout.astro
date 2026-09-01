@@ -35,16 +35,11 @@ const projects = [
   },
 ];
 
-const repoCount = 22;
-const languageCount = 6;
-const monthlyContributions = 699;
-const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
-  const palette = ['#ebedf0', '#dcfce7', '#bbf7d0', '#4ade80', '#166534'];
-  return {
-    key: `heat-${index}`,
-    color: palette[index % palette.length],
-  };
-});
+const stats = [
+  { label: 'GitHub Repos', value: '22+' },
+  { label: 'Years Coding', value: '5+' },
+  { label: 'Projects Built', value: '15+' },
+];
 ---
 
 <Layout
@@ -53,9 +48,9 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
   description='B.Tech Information Technology student building AI systems and full-stack products.'
 >
   <main class='bg-white'>
-    <div class='grid grid-cols-1 lg:grid-cols-4 gap-0'>
-      {/* Left Column - Main Content (3 out of 4 columns) */}
-      <div class='col-span-1 lg:col-span-3 border-b lg:border-b-0 lg:border-r border-black/10'>
+    <div class='grid grid-cols-1 lg:grid-cols-4 min-h-screen'>
+      {/* Left Column - Main Content (spans 2.5 out of 4) */}
+      <div class='lg:col-span-3 border-r border-black/10'>
         {/* Hero Section */}
         <section class='border-b border-black/10 px-4 py-12 sm:px-6 md:px-8 md:py-20'>
           <div>
@@ -133,17 +128,6 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
                 </a>
               ))}
             </div>
-
-            <div class='mt-12 pt-8 border-t border-black/10'>
-              <a 
-                href='https://github.com/lumacodes?tab=repositories' 
-                target='_blank' 
-                rel='noopener'
-                class='inline-flex items-center justify-center px-6 py-3 border-2 border-black text-xs font-bold uppercase tracking-[0.1em] hover:bg-black hover:text-white transition-all duration-300'
-              >
-                View More Projects →
-              </a>
-            </div>
           </div>
         </section>
 
@@ -157,10 +141,11 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
             <div class='grid gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
               {Object.entries(skills).map(([category, items]) => (
                 <div class='space-y-3'>
-                  <h3 class='text-xs font-bold uppercase tracking-[0.12em] text-black/50 pb-2 border-b border-black/20'>
-                    {category.replace(/([A-Z])/g, ' $1').trim()}
+                  <h3 class='text-xs font-bold uppercase tracking-[0.12em] text-black/50 flex items-center gap-2'>
+                    <span>▸</span>
+                    <span>{category.replace(/([A-Z])/g, ' $1').trim()}</span>
                   </h3>
-                  <ul class='space-y-2'>
+                  <ul class='space-y-2 pl-4'>
                     {items.map((skill) => (
                       <li class='text-sm text-black/80'>• {skill}</li>
                     ))}
@@ -175,16 +160,18 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
         <section class='border-b border-black/10 px-4 py-12 sm:px-6 md:px-8 md:py-20'>
           <div class='grid gap-10 sm:gap-12 md:grid-cols-2'>
             <div class='space-y-4'>
-              <h2 class='text-lg sm:text-xl font-bold border-l-4 border-black pl-4'>
-                Open Source
+              <h2 class='text-lg sm:text-xl font-bold flex items-center gap-2'>
+                <span>◆</span>
+                <span>Open Source</span>
               </h2>
               <p class='text-sm leading-relaxed text-black/70'>
                 Contributed to <a href='https://github.com/is-a-dev/register' class='underline hover:opacity-60 transition-opacity'>is-a-dev/register</a>, maintaining free developer subdomains. Active on GitHub with 22+ public repositories spanning AI, automation, systems, and tooling.
               </p>
             </div>
             <div class='space-y-4'>
-              <h2 class='text-lg sm:text-xl font-bold border-l-4 border-black pl-4'>
-                Education
+              <h2 class='text-lg sm:text-xl font-bold flex items-center gap-2'>
+                <span>◆</span>
+                <span>Education</span>
               </h2>
               <div>
                 <p class='text-sm font-medium text-black/90'>B.Tech in Information Technology</p>
@@ -200,8 +187,9 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
         {/* Interests Section */}
         <section class='px-4 py-12 sm:px-6 md:px-8 md:py-20'>
           <div>
-            <h2 class='mb-8 text-lg sm:text-xl font-bold border-l-4 border-black pl-4'>
-              Interests & Focus
+            <h2 class='mb-8 text-lg sm:text-xl font-bold flex items-center gap-2'>
+              <span>◆</span>
+              <span>Interests & Focus</span>
             </h2>
             <div class='flex flex-wrap gap-2 sm:gap-3'>
               {['AI Systems', 'Developer Tooling', 'Linux Internals', 'Privacy Tech', '3D Interfaces', 'Open Source'].map((interest) => (
@@ -214,83 +202,55 @@ const weeklyHeatmap = Array.from({ length: 35 }, (_, index) => {
         </section>
       </div>
 
-      {/* Right Sidebar - GitHub Contributions (1 out of 4 columns) */}
-      <aside class='col-span-1 flex flex-col bg-[#f9f7f4] px-4 py-8 sm:px-6 lg:px-6 gap-8 overflow-y-auto border-t lg:border-t-0 lg:border-l border-black/10 lg:sticky lg:top-0 lg:h-screen'>
-        <div class='rounded-2xl border border-black/10 bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.04)]'>
-          <div class='space-y-4'>
-            <h3 class='text-[10px] font-bold uppercase tracking-[0.18em] text-black/60'>GitHub Activity</h3>
-            <p class='text-xs text-black/50'>This month</p>
-          </div>
-
-          <div class='mt-5 rounded-xl border border-black/10 bg-[#f9fafb] p-3'>
-            <div class='mb-4 flex items-center justify-between'>
-              <span class='text-[10px] font-bold uppercase tracking-[0.12em] text-black/50'>Total</span>
-              <span class='text-xl font-black text-black'>{monthlyContributions.toLocaleString()}</span>
-            </div>
-
-            <div class='grid grid-cols-7 gap-[3px]'>
-              {weeklyHeatmap.map((cell) => (
-                <div
-                  class='h-2 w-2 rounded-[2px] border border-black/5'
-                  style={`background: ${cell.color};`}
-                />
-              ))}
-            </div>
-
-            <div class='mt-3 flex items-center justify-between text-[10px] text-black/40'>
-              <span>Mon</span>
-              <span>Wed</span>
-              <span>Fri</span>
-            </div>
-
-            <p class='mt-4 text-center text-xs text-black/40 font-medium'>
-              <a href='https://github.com/lumacodes' target='_blank' rel='noopener' class='underline hover:opacity-60'>
-                View full profile →
-              </a>
-            </p>
+      {/* Right Sidebar (1 column out of 4) */}
+      <aside class='hidden lg:flex lg:flex-col bg-[#f9f7f4] sticky top-0 h-screen px-6 py-8 gap-8 overflow-y-auto'>
+        {/* Quick Stats */}
+        <div class='space-y-4'>
+          <h3 class='text-xs font-bold uppercase tracking-[0.15em] text-black/60'>Stats</h3>
+          <div class='space-y-3'>
+            {stats.map((stat) => (
+              <div class='flex items-center justify-between'>
+                <span class='text-xs text-black/60'>{stat.label}</span>
+                <span class='text-lg font-bold text-black'>{stat.value}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div class='rounded-2xl border border-black/10 bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.04)]'>
-          <div class='space-y-4'>
-            <h3 class='text-[10px] font-bold uppercase tracking-[0.18em] text-black/60'>Quick Stats</h3>
-            <div class='space-y-3'>
-              <div class='flex items-center justify-between rounded-lg bg-[#f5f5f3] px-3 py-2'>
-                <span class='text-xs text-black/60'>Repositories</span>
-                <span class='text-lg font-bold text-black'>{repoCount.toLocaleString()}</span>
-              </div>
-              <div class='flex items-center justify-between rounded-lg bg-[#f5f5f3] px-3 py-2'>
-                <span class='text-xs text-black/60'>Languages</span>
-                <span class='text-lg font-bold text-black'>{languageCount.toLocaleString()}</span>
-              </div>
-              <div class='flex items-center justify-between rounded-lg bg-[#f5f5f3] px-3 py-2'>
-                <span class='text-xs text-black/60'>Contributions</span>
-                <span class='text-lg font-bold text-black'>{monthlyContributions.toLocaleString()}</span>
-              </div>
-            </div>
+        <div class='w-full h-px bg-black/10'></div>
+
+        {/* Status */}
+        <div class='space-y-4'>
+          <h3 class='text-xs font-bold uppercase tracking-[0.15em] text-black/60'>Status</h3>
+          <div class='flex items-center gap-2'>
+            <span class='w-2 h-2 bg-green-500 rounded-full animate-pulse'></span>
+            <span class='text-sm text-black/80'>Open for collaborations & opportunities</span>
           </div>
         </div>
 
-        <div class='space-y-3 pt-1'>
+        <div class='w-full h-px bg-black/10'></div>
+
+        {/* Quick Skills */}
+        <div class='space-y-4'>
+          <h3 class='text-xs font-bold uppercase tracking-[0.15em] text-black/60'>Key Skills</h3>
+          <div class='flex flex-wrap gap-2'>
+            {['AI', 'React', 'Python', 'Systems', 'Full-Stack'].map((skill) => (
+              <span class='px-2 py-1 bg-black/10 text-xs font-medium rounded text-black/80'>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class='w-full h-px bg-black/10'></div>
+
+        {/* Contact CTA */}
+        <div class='space-y-3'>
           <a 
-            href='/resume'
-            class='flex w-full items-center justify-center px-4 py-3 bg-black text-white text-xs font-bold uppercase tracking-[0.1em] rounded-xl hover:bg-black/90 transition-all shadow-[0_10px_25px_rgba(0,0,0,0.12)]'
+            href='mailto:subhajit@luma.is-a.dev' 
+            class='flex w-full items-center justify-center px-4 py-3 bg-black text-white text-xs font-bold uppercase tracking-[0.1em] hover:bg-black/90 transition-all'
           >
-            Resume
-          </a>
-          <a 
-            href='mailto:subhajitkumardas@outlook.com' 
-            class='flex w-full items-center justify-center px-4 py-3 border border-black/20 bg-white text-xs font-bold uppercase tracking-[0.1em] rounded-xl hover:bg-black/5 transition-all'
-          >
-            Contact Me
-          </a>
-          <a 
-            href='https://github.com/lumacodes' 
-            target='_blank'
-            rel='noopener'
-            class='flex w-full items-center justify-center px-4 py-2.5 border border-black/20 bg-white text-xs font-bold uppercase tracking-[0.1em] rounded-xl hover:bg-black/5 transition-all'
-          >
-            GitHub Profile
+            Get in Touch
           </a>
         </div>
       </aside>

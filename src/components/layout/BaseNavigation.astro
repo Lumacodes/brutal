@@ -1,76 +1,56 @@
 ---
-import SocialIcon from '@components/generic/SocialIcon.astro';
-
-type SocialIconName = 'github' | 'twitter' | 'linkedin' | 'rss';
-
 interface Props {
   pageTitle?: string;
 }
 
 const navigationItems = [
   { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blog/' },
-];
-
-const socialIcons: Array<{ name: string; url: string; icon: SocialIconName }> = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/eliancodes/brutal',
-    icon: 'github',
-  },
-  {
-    name: 'Twitter',
-    url: 'https://www.twitter.com/eliancodes',
-    icon: 'twitter',
-  },
-  { name: 'RSS', url: '/feed.xml', icon: 'rss' },
+  { name: 'Blog', url: 'https://subhajitdas.hashnode.dev' },
+  { name: 'GitHub', url: 'https://github.com/lumacodes' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/subhajitkumardas' },
 ];
 
 const { pageTitle } = Astro.props;
 ---
 
-<header class='border-b-4 border-black flex justify-between p-6 items-center'>
+<header class='border-b-2 border-black bg-[#f6f4ef]'>
   {pageTitle && <h1 class='hidden'>{pageTitle}</h1>}
-  <a href='/' title='Back to Home'>
-    <p class='righteous md:text-5xl'>Brutal</p>
-  </a>
-  <nav class='hidden md:inline-block'>
-    <h2 class='hidden'>Navigation</h2>
-    <ul class='flex gap-8 poppins'>
-      {
-        navigationItems.map((item) => (
-          <li>
-            <a
-              class='text-lg font-medium hover:text-green-700 hover:underline transition-all duration-150 ease-in-out'
-              href={item.url}
-              title={`Go to ${item.name}`}
-            >
-              {item.name}
-            </a>
-          </li>
-        ))
-      }
-      {
-        socialIcons.map((item) => (
-          <li>
-            <a
-              href={item.url}
-              class='hover:text-green-700 hover:underline transition-all duration-150 ease-in-out'
-              target='_blank'
-              rel='noopener'
-              title={`See @ElianCodes on ${item.name}`}
-            >
-              <SocialIcon icon={item.icon} class='h-6 w-6' />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-  <nav class='md:hidden flex'>
-    <h2 class='hidden'>Mobile Navigation</h2>
-    <ul>
-      <li><a href='/blog/'>Blog</a></li>
-    </ul>
-  </nav>
+
+  <div class='flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 md:px-8'>
+    <a href='/' title='Back to Home' class='shrink-0 flex items-center'>
+      <img 
+        src='https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif' 
+        alt='Coding'
+        class='h-6 w-auto sm:h-8 md:h-10 lg:h-12 object-contain hover:scale-110 transition-transform duration-300'
+      />
+    </a>
+
+    <nav aria-label='Main navigation' class='ml-auto flex items-center gap-4 sm:gap-6 md:gap-10'>
+      <ul class='flex flex-wrap items-center gap-2 sm:gap-3 md:gap-6'>
+        {
+          navigationItems.map((item) => (
+            <li>
+              <a
+                class='text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.12em] text-black transition-opacity duration-150 hover:opacity-70 md:text-xs'
+                href={item.url}
+                title={`Go to ${item.name}`}
+                target={item.url.startsWith('http') ? '_blank' : undefined}
+                rel={item.url.startsWith('http') ? 'noopener' : undefined}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      {/* Contact CTA - Desktop only */}
+      <a 
+        href='mailto:subhajit@luma.is-a.dev' 
+        class='hidden md:inline-flex items-center px-4 py-2 border-2 border-black bg-black text-white text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-white hover:text-black transition-all duration-200'
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
 </header>
